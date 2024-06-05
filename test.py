@@ -13,17 +13,17 @@ class TestAES(unittest.TestCase):
         key = generate_AES_Key()
         message_encrypt = encrypt_AES_GCM(msg, key)
         message_decrypt = decrypt_AES_GCM(message_encrypt, key)
-        assert msg == message_decrypt, "le message obtenue n'est pas le message initiale"
+        assert msg == message_decrypt, "le message obtenu n'est pas le message initial"
         print("message decrypt with success")
 
     def test_pipeline(self):
         msg = "je suis un password"
         key = generate_AES_Key()
         message_encrypt = encrypt_AES_GCM(msg, key)
-        save_encrypt_message(message_encrypt, "./test/encryptedMessage.txt")
-        message_encrypt_read = read_file("./test/encryptedMessage.txt")
+        save_encrypt_message(message_encrypt, "test/message.json")
+        message_encrypt_read = read_file("test/message.json")
         message_decrypt = decrypt_AES_GCM(message_encrypt_read, key)
-        assert msg == message_decrypt, "le message obtenue n'est pas le message initiale"
+        assert msg == message_decrypt, "le message obtenu n'est pas le message initial"
         print("message decrypt with success")
 
 

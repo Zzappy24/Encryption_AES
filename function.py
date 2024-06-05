@@ -20,7 +20,7 @@ def save_key(key: bytes, path: str) -> None:
     with open(path, "w") as f:
         keyStr = hex_to_string(key)
         keyData = {"key": f"{keyStr}"}
-        f.write(json.dumps(keyData))
+        json.dump(keyData, f)
 
 
 def encrypt_AES_GCM(msg: str | bytes, secretKey: str | bytes) -> tuple[str, str, str]:
@@ -56,8 +56,7 @@ def save_encrypt_message(encryptedMsg: tuple[str, str, str], path: str) -> None:
         'authTag': encryptedMsg[2]
     }}
     with open(path, "w") as f:
-        jsonData = json.dumps(encryptedData)
-        f.write(jsonData)
+        json.dump(encryptedData, f)
 
 
 def string_to_hex(valueString: str) -> bytes:
@@ -66,11 +65,10 @@ def string_to_hex(valueString: str) -> bytes:
 
 
 def read_file(path: str) -> tuple[Any, Any, Any]:
-    with open(path) as encryptMsg:
-        for i in encryptMsg:
-            encryptMsg = json.loads(i)["encryptMsg"]
-            encryptMsg = encryptMsg["ciphertext"], encryptMsg["aesIV"], encryptMsg["authTag"]
-            return encryptMsg
+    with open(path, "r") as file:
+        encryptMsg = json.load(file)["encryptMsg"]
+        encryptMsg = encryptMsg["ciphertext"], encryptMsg["aesIV"], encryptMsg["authTag"]
+        return encryptMsg
 
 
 def decrypt_AES_GCM(encryptedMsg: [str, str, str], secretKey) -> str:
