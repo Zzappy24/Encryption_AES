@@ -1,5 +1,3 @@
-Voici les corrections apportées à votre README.md :
-
 # I. Installer les dépendances
 `pip install -r requirements.txt`
 
