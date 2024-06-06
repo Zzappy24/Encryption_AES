@@ -46,9 +46,9 @@ def save_key(key: bytes, path: str) -> None:
 
 @gestion_erreur_decorator
 def encrypt_AES_GCM(msg: str | bytes, secretKey: str | bytes) -> tuple[str, str, str]:
-    if type(secretKey) is str:
+    if isinstance(secretKey,str):
         secretKey = string_to_hex(secretKey)
-    if type(msg) is str:
+    if isinstance(msg, str):
         msg = msg.encode('utf-8')
     aesCipher = AES.new(secretKey, AES.MODE_GCM)
     ciphertext, authTag = aesCipher.encrypt_and_digest(msg)
@@ -94,7 +94,7 @@ def read_file(path: str) -> tuple[Any, Any, Any]:
 
 @gestion_erreur_decorator
 def decrypt_AES_GCM(encryptedMsg: [str, str, str], secretKey: str | bytes) -> str:
-    if type(secretKey) is str:
+    if isinstance(secretKey, str):
         secretKey: bytes = string_to_hex(secretKey)
     encryptedMsg: tuple[bytes, bytes, bytes] = msg_encode(encryptedMsg)
     ciphertext: bytes = encryptedMsg[0]
