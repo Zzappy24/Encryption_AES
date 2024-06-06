@@ -14,7 +14,6 @@ class TestAES(unittest.TestCase):
         message_encrypt = encrypt_AES_GCM(msg, key)
         message_decrypt = decrypt_AES_GCM(message_encrypt, key)
         assert msg == message_decrypt, "le message obtenu n'est pas le message initial"
-        print("message decrypt with success")
 
     def test_pipeline(self):
         msg = "je suis un password"
@@ -24,7 +23,6 @@ class TestAES(unittest.TestCase):
         message_encrypt_read = read_file("test/message.json")
         message_decrypt = decrypt_AES_GCM(message_encrypt_read, key)
         assert msg == message_decrypt, "le message obtenu n'est pas le message initial"
-        print("message decrypt with success")
 
 
 if __name__ == '__main__':
