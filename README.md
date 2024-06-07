@@ -10,10 +10,10 @@ Dans l'ordre, nous allons :
 
 ### 1. Générer une clé
 `python generate_key_main.py`
-Cela va créer une clé dans le fichier `./keyGenerated/key.txt`.
+Cela va créer une clé dans le fichier `./keyGenerated/key.json`.
 
 ### 2. Chiffrer un message
-On récupère la clé dans le fichier `key.txt`, par exemple : `python encrypt_main.py ce98a434d6ed076114880459b48b9a7630dcc847e87091d00d54ffa87f25213a`
+On récupère la clé dans le fichier `./encryptMessage/message.json`, par exemple : `python encrypt_main.py ce98a434d6ed076114880459b48b9a7630dcc847e87091d00d54ffa87f25213a`
 Cela va chiffrer le message défini dans le code en y ajoutant deux autres paramètres de sécurité, à sauvegarder avec le message.
 
 ### 3. Déchiffrer un message
