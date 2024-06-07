@@ -1,10 +1,9 @@
 import json
-from typing import Tuple, Any
+from typing import Any
 import logging
 from Crypto.Cipher import AES
 import os
 import binascii
-import sys
 
 # Définition du décorateur de gestion des erreurs
 def gestion_erreur_decorator(func):
